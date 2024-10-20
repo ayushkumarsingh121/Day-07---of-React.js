@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Counter</title>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+
+  function App() {
+
+    let [state, setState] = React.useState({ math: 0, science: 0, english: 0 }) // [value, setVaue]
+
+    let incrementM = () => {
+      let oldMathsScore = state.math; //0
+      let newState = { ...state, math: oldMathsScore + 1 }
+      setState(newState)
+    }
+
+    let incrementS = () => {
+      let oldScienceScore = state.science; //0
+      let newState = { ...state, science: oldScienceScore + 1 }
+      setState(newState)
+    }
+
+    let incrementE = () => {
+      let oldEnglishScore = state.english; //0
+      let newState = { ...state, english: oldEnglishScore + 1 }
+      setState(newState)
+    }
+
+    return (
+      <>
+        <div>
+          <pre><code>
+            {JSON.stringify(state)}
+          </code></pre>
+        </div>
+
+        <div>
+          <button onClick={incrementM}>+M</button>
+          <button onClick={incrementS}>+S</button>
+          <button onClick={incrementE}>+E</button>
+        </div>
+      </>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+
+</script>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  // if checkbox is changed to checked, console.log "checked"
+  // if checkbox is changed to unchecked, console.log "unchecked"
+  // if the text input is changes, console.log the value of the text box
+  function App() {
+    let checkboxHandler = (e) => {
+      let checkedBtn = e.target.checked; // this gives true when we click and when we not click this gives you false;  
+      let result = checkedBtn == true ? "Checked" : "UnChecked"
+      console.log(result)
+      
+    }
+
+    let textHandler = (e) => {
+      console.log(e.target.value);
+    }
+    return (
+      <div>
+        <input type="checkbox" onChange = {checkboxHandler} />
+        <label> Checkbox</label>
+        <br />
+        <br />
+        <input type="text" onChange = {textHandler} />
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+
+</script>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Counter</title>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  let root = ReactDOM.createRoot(document.getElementById("root"))
+  function App() {
+    // State variables for each subject's score
+    let [mathsScore, setMathsScore] = React.useState(0);
+    let [scienceScore, setScienceScore] = React.useState(0);
+    let [englishScore, setEnglishScore] = React.useState(0);
+
+    // Increment and Decrement Handlers
+    let incrementMaths = () => {
+      setMathsScore(mathsScore + 1);
+    };
+
+    let decrementMaths = () => {
+      setMathsScore(mathsScore - 1);
+    };
+
+    let incrementScience = () => {
+      setScienceScore(scienceScore + 1);
+    };
+
+    let decrementScience = () => {
+      setScienceScore(scienceScore - 1);
+    };
+
+    let decrementEnglish = () => {
+      setEnglishScore(englishScore - 1)
+    }
+
+    let incrementEnglish = () => {
+      setEnglishScore(englishScore + 1)
+    }
+
+    let resetAll = () => {
+      setEnglishScore(0);
+      setScienceScore(0);
+      setMathsScore(0);
+    };
+
+    return (
+      <div>
+        <div>
+          <strong>Maths Score: {mathsScore}</strong>
+          <button onClick={decrementMaths}>-</button>
+          <button onClick={incrementMaths}>+</button>
+        </div>
+
+        <div>
+          <strong>Science Score: {scienceScore}</strong>
+          <button onClick={decrementScience}>-</button>
+          <button onClick={incrementScience}>+</button>
+        </div>
+
+        <div>
+          <strong>English Score: {englishScore}</strong>
+          <button onClick={decrementEnglish}>-</button>
+          <button onClick={incrementEnglish}>+</button>
+        </div>
+
+        <div>
+          <strong>RESET ALL to 0:</strong>
+          <button onClick={resetAll}>RESET</button>
+        </div>
+      </div>
+    );
+  }
+
+  root.render(<App />)
+</script>
+
+</html>

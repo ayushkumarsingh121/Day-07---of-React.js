@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Counter</title>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+
+// Main functional component `App`
+function App() {
+
+// useState hook to initialize the state with 3 keys: math, science, english, all set to 0
+let [state, setState] = React.useState({ math: 0, science: 0, english: 0 });
+
+// Function to increment the 'math' score
+let incrementM = () => {
+  let oldMathsScore = state.math; // Get the current Math score which is 0
+  let newState = {
+    science: state.science,       // Keeping the science score unchanged which is 0
+    english: state.english,       // Keeping the english score unchanged which is 0
+    math: oldMathsScore + 1,      // Correctly incrementing the math score
+  };
+  setState(newState); // Set the new state with updated math score
+};
+
+// Function to increment the 'science' score
+let incrementS = () => {
+  let oldScienceScore = state.science; // Get the current Science score which is 0
+  let newState = {
+    math: state.math,           // Keeping the math score unchanged which is 0
+    english: state.english,        // Keeping the english score unchanged which is 0
+    science: oldScienceScore + 1,  // Incrementing the science score by 1
+  };
+  setState(newState); // Set the new state with updated science score
+};
+
+// Function to increment the 'english' score
+let incrementE = () => {
+  let oldEnglishScore = state.english; // Get the current English score which is 0
+  let newState = {
+    math: state.math,            // Keeping the math score unchanged which is 0
+    science: state.science,      // Keeping the science score unchanged which is 0
+    english: oldEnglishScore + 1,  // Incrementing the English score by 1
+  };
+  setState(newState); // Set the new state with updated English score
+};
+
+// Return JSX with buttons and display
+return (
+  <>
+    <div>
+      {/* Displays the current state as JSON */}
+      <pre><code>
+        {JSON.stringify(state)}
+      </code></pre>
+    </div>
+
+    <div>
+      <button onClick={incrementM}>+M</button>
+      <button onClick={incrementS}>+S</button>
+      <button onClick={incrementE}>+E</button>
+    </div>
+  </>
+);
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+
+
+</script>
+
+</html>
